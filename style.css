@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: var(--bs-dark);
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 800px;  /* Aumentei o max-width para tornar o container maior */
+    padding: 40px;      /* Aumentei o padding para dar mais espaço */
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
+    background-color: var(--bs-white);
+}
+
+h1 {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 5px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;  /* Aumentei o tamanho da fonte para maior legibilidade */
+    margin-bottom: 20px;
+}
+#oponente_system {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+#oponente_system::after {
+    content: " ?";
+}
+
+input {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size:large;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    margin-bottom: 30px;  /* Aumentei a margem para dar mais espaço entre os elementos */
+}
+
+.btn {
+    font-size: 1.2rem;  /* Aumentei o tamanho dos botões para maior destaque */
+    padding: 10px 20px;
+}
+
+.emoji, .resposta {
+    font-size: 1.5rem;   /* Aumentei o tamanho da fonte para as respostas e emojis */
+    margin-top: 30px;
+}
+
+.spinner-border {
+    width: 4rem; /* Aumentei o tamanho do spinner */
+    height: 4rem;
+}
