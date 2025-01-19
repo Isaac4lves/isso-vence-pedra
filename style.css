@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('fontes/Qdbettercomicsans-jEEeG.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -6,56 +13,86 @@ body {
     margin: 0;
     text-align: center;
     background-color: var(--bs-dark);
+    overflow: hidden;
 }
 
 .container-fluid {
     width: 100%;
-    max-width: 800px;  /* Aumentei o max-width para tornar o container maior */
-    padding: 40px;      /* Aumentei o padding para dar mais espaço */
+    max-width: 800px;
+    padding: 40px;
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
     background-color: var(--bs-white);
+    margin: 8px;
+    overflow-wrap: break-word;
 }
 
 h1 {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     margin: 5px;
+    font-size: 2.5rem;
+    word-wrap: break-word;
 }
 
 p {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;  /* Aumentei o tamanho da fonte para maior legibilidade */
+    font-size: 1.5rem;
     margin-bottom: 20px;
+    overflow-wrap: break-word;
 }
+
 #oponente_system {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 2rem;
+    word-wrap: break-word;
 }
+
 #oponente_system::after {
     content: " ?";
 }
 
 input {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
-    font-size:large;
+    font-size: large;
     letter-spacing: 1px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .input-group {
-    margin-bottom: 30px;  /* Aumentei a margem para dar mais espaço entre os elementos */
+    margin-bottom: 30px;
+    width: 100%;
 }
 
 .btn {
-    font-size: 1.2rem;  /* Aumentei o tamanho dos botões para maior destaque */
+    font-size: 1.2rem;
     padding: 10px 20px;
+    word-wrap: break-word;
 }
 
 .emoji, .resposta {
-    font-size: 1.5rem;   /* Aumentei o tamanho da fonte para as respostas e emojis */
+    font-size: 1.5rem;
     margin-top: 30px;
+    word-wrap: break-word;
 }
 
 .spinner-border {
-    width: 4rem; /* Aumentei o tamanho do spinner */
+    width: 4rem;
     height: 4rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .container-fluid {
+        padding: 20px;
+    }
 }
