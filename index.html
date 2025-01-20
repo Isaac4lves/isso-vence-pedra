@@ -8,7 +8,9 @@
     <title>Isso Vence Pedra?</title>
 </head>
     <body style="background-color: var(--bs-dark);">
-    <div class="d-flex justify-content-center align-items-center" style="height: 100%;"></div>
+    <a href="user.html"> <p class="justify-content-start" id="signup">Login</p> </a>
+
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
     <div class="container-fluid" style="background-color: var(--bs-white);">
         <h1>Isso Vence</h1>
             
@@ -28,7 +30,8 @@
             <p class="resposta"></p>
         </div>
     </div> 
-    
+</div>
+    <script src="popup.js"></script>
     <script src="https://js.puter.com/v2/"></script>
     <script>
         let oponentes = [];
@@ -63,7 +66,7 @@
             console.log(luta)
             puter.ai.chat(`Desejo respostas diretas. Você é um julgador de lutas ficticias, preciso que você seja lógico 
             nas suas decisões e apresente uma justificativa válida, sucinta e não muito detalhada, no máximo 160 caracteres. Após disso deixe o código
-            do emoji que reprenta o ganhador Exemplo: 'Quem vence, pedra ou tesoura? A pedra amassa a tesoura e vence. &#129704;'. 
+            do emoji que reprenta o ganhador Exemplo: 'Quem vence, <b>pedra</b> ou <b>tesoura</b>? A <b>pedra</b> amassa a <b>tesoura</b> e vence. &#129704;'. 
             Quem vence, ${luta}?`)
             .then(response => {
                 document.querySelector(".resposta").innerHTML = response;
@@ -73,7 +76,6 @@
         
         function proxima_partida(){
             document.querySelector("#proxima_luta").style.display = "block";
-
         }
         </script>
 </body>
