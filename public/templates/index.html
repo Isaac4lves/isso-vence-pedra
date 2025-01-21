@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../static/style.css" rel="stylesheet">
+    <title>Isso Vence Pedra?</title>
+</head>
+    <body style="background-color: var(--bs-dark);">
+    <a href="user.html"> <p class="justify-content-start" id="signup">Login</p> </a>
+    
+    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+    
+    <div class="container-fluid" style="background-color: var(--bs-white);">
+        <h1>Isso Vence</h1>
+            
+        <div class="form">
+                <p id="oponente_system">Pedra</p>
+                
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="oponente_player" placeholder="ex: Kira do Death Note" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-danger" onclick="atualiza_informações()" type="button" id="submit">Lutar</button>
+                </div>
+
+                <div class="after">
+                    <button style="display: none;" id="proxima_luta"  class="btn btn-outline-warning" onclick="atualiza_oponente()">Próxima Luta</button>
+                </div>
+            </div>
+            <p class="emoji"></p>
+            <p class="resposta"></p>
+        </div>
+    </div> 
+</div>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        let oponentes = [];
+        
+        function atualiza_oponente(e){
+            i = oponentes.length - 1;
+                document.querySelector("#oponente_system").textContent = oponentes[i];
+                document.querySelector("#proxima_luta").style.display = "none";
+                document.querySelector(".resposta").innerHTML = "";
+
+                return;
+        }
+        
+        function atualiza_informações(e) {
+            
+            let maquina = document.querySelector("#oponente_system").textContent;
+            let player = document.querySelector("#oponente_player").value;
+
+            oponentes.push(player);
+            luta(`${maquina} ou ${player}`);
+        }
+    
+        function luta(luta){
+            document.querySelector(".resposta").innerHTML = `
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            `;
+
+            console.log(luta)
+            puter.ai.chat(`Desejo respostas diretas. Você é um julgador de lutas ficticias, preciso que você seja lógico 
+            nas suas decisões e apresente uma justificativa válida, sucinta e não muito detalhada, no máximo 160 caracteres. Após disso deixe o código
+            do emoji que reprenta o ganhador Exemplo: 'Quem vence, <b>pedra</b> ou <b>tesoura</b>? A <b>pedra</b> amassa a <b>tesoura</b> e vence. &#129704;'. 
+            Quem vence, ${luta}?`)
+            .then(response => {
+                document.querySelector(".resposta").innerHTML = response;
+            });
+            proxima_partida();
+        }  
+        
+        function proxima_partida(){
+            document.querySelector("#proxima_luta").style.display = "block";
+        }
+        </script>
+</body>
+</html>
