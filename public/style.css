@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url('../fontes/Qdbettercomicsans-jEEeG.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: var(--bs-dark);
+    overflow: hidden;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
+    background-color: var(--bs-white);
+    margin: 8px;
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 5px;
+    font-size: 2.5rem;
+    word-wrap: break-word;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    overflow-wrap: break-word;
+}
+
+#oponente_system {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 2rem;
+    word-wrap: break-word;
+}
+
+#oponente_system::after {
+    content: " ?";
+}
+#proxima_luta {
+    animation: treme-suave 0.4s ease-in-out;
+}
+
+#pontuação {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 1.2rem;
+    color: rgb(154, 154, 154);
+}
+#pontuação::after {
+    content: " ponto(s)";
+}
+
+
+input {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: large;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.input-group {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    word-wrap: break-word;
+}
+
+.emoji, .resposta {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    word-wrap: break-word;
+    font-weight: 200;
+}
+
+.spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+#signup {
+    position: absolute;
+    color: aliceblue;
+
+    top: 0;
+    left: 0; 
+    margin: 0; 
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .container-fluid {
+        padding: 20px;
+    }
+}
+
+/* ANIMAÇÃO */
+@keyframes treme-suave {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(2px); }
+    50% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
