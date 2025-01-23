@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Comic Sans MS';
-    src: url('../fontes/Qdbettercomicsans-jEEeG.ttf') format('truetype');
+    src: url('fontes/Qdbettercomicsans-jEEeG.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
