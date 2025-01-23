@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
     <title>Isso Vence Pedra?</title>
 </head>
-    <body style="background-color: var(--bs-white);">
+
+<body style="background-color: var(--bs-white);">
     <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
         <!-- <p id="signup"><a href="user.html">Ranking</a></p> -->
-    <div class="container-fluid" style="background-color: var(--bs-white);">
-        <h1>Isso Vence</h1>
-            
-        <div class="form">
+        <div class="container-fluid" style="background-color: var(--bs-white);">
+            <h1>Isso Vence</h1>
+
+            <div class="form">
                 <p id="oponente_system">Pedra</p>
-                
+
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="oponente_player" placeholder="Papel" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-danger" onclick="atualiza_informações()" type="button" id="submit">Lutar</button>
+                    <input type="text" class="form-control" id="oponente_player" placeholder="Papel"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-danger" onclick="atualiza_informações()" type="button"
+                        id="submit">Lutar</button>
                 </div>
 
-            <p id="pontuação">0</p>
-            <p class="emoji"></p>
-            <p class="resposta"></p>
-            
-            <div class="after">
-                <button style="display: none;" id="proxima_luta"  class="btn btn-outline-warning" onclick="atualiza_oponente()">Próxima Luta</button>
-            </div>
+                <p id="pontuação">0</p>
+                <p class="emoji"></p>
+                <p class="resposta"></p>
+
+                <!-- <div class="after">
+                    <button style="display: none;" id="proxima_luta" class="btn btn-outline-warning"
+                        onclick="atualiza_oponente()">Próxima Luta</button>
+                </div> -->
 
             </div>
-        </div> 
+        </div>
     </div>
     <script src="https://js.puter.com/v2/"></script>
     <script>
         let pontuação = 0;
         let oponentes = [];
-        
-        function atualiza_oponente(e){
-            i = oponentes.length - 1;
-                document.querySelector("#oponente_system").textContent = oponentes[i];
-                document.querySelector("#proxima_luta").style.display = "none";
-                document.querySelector(".resposta").innerHTML = "";
 
-                return;
+        function atualiza_oponente(e) {
+            i = oponentes.length - 1;
+            document.querySelector("#oponente_system").textContent = oponentes[i];
+            document.querySelector("#proxima_luta").style.display = "none";
+            document.querySelector(".resposta").innerHTML = "";
+
+            return;
         }
-        
+
         function atualiza_informações(e) {
             let maquina = document.querySelector("#oponente_system").textContent;
             let player = document.querySelector("#oponente_player").value;
@@ -53,49 +59,57 @@
             oponentes.push(player);
             luta(`${maquina} ou ${player}`, maquina, player);
         }
-    
-        function luta(luta, maquina, player){
-            document.querySelector(".resposta").innerHTML = `
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            `;
 
-            console.log(luta)
+        function luta(luta, maquina, player) {
+            document.querySelector(".resposta").innerHTML = `
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    `;
+
             puter.ai.chat(`Desejo respostas diretas. Você é um julgador de lutas ficticias, preciso que você seja lógico 
-            nas suas decisões e apresente uma justificativa válida, sucinta e não muito detalhada, no máximo 160 caracteres. Após disso deixe o código
+            nas suas decisões e apresente uma justificativa válida, sucinta e não muito detalhada, no máximo 150 caracteres. Após disso deixe o código
             do emoji que reprenta o ganhador para colocar no HTML. Exemplo: 'Quem vence, pedra ou tesoura? A pedra amassa a tesoura e vence. &#129704;'. 
             Quem vence, ${luta}?`)
-            .then(response => {
-                document.querySelector(".resposta").innerHTML = response;
-            });
-            proxima_partida(player, maquina);
-        }  
-        
-        function proxima_partida(player, maquina){
-            document.querySelector("#proxima_luta").style.display = "block";
-            
-            let luta = document.querySelector(".resposta").textContent;
-            puter.ai.chat(`irei lhe dar uma string de luta e me retorne se o usuário ganhou ou não, ${luta}? Usuário: ${player}. Maquina: ${maquina} APENAS DIGA TRUE OU FALSE`)
-            .then(response => {
-                console.log(response);
-                if(response == "FALSE") {
-                    pontuação = 0;
-                } else {
-                    pontuação = pontuação + 5;
-                }
-                document.querySelector("#pontuação").innerHTML = pontuação;
-            });
+                .then(response => {
+                    // Atualiza o conteúdo da resposta
+                    document.querySelector(".resposta").innerHTML = response;
 
+                    // Processa a próxima partida somente após a resposta ser atualizada
+                    proxima_partida(player, maquina, response);
+                });
         }
 
-        document.querySelector("#oponente_player").addEventListener("keyup", function(event) {
+        function proxima_partida(player, maquina, lutaTexto) {
+            // document.querySelector("#proxima_luta").style.display = "block";
+            
+            let luta = document.querySelector(".resposta").textContent;
+            console.log(luta, maquina, player);
+            // while (luta != "")
+
+            puter.ai.chat(`me diga o ganhador de acordo com este texto ${luta}. retorne APENAS o nome do ganhador, APENAS escrito deste jeito ${player} ou deste ${maquina}`)
+                .then(response => {
+                    console.log(response);
+                    if (response == maquina) {
+                        pontuação = 0;
+                        document.querySelector("#pontuação").innerHTML = pontuação;
+                    } else if (response == player) {
+                        pontuação = pontuação + 5;
+                        document.querySelector("#pontuação").innerHTML = pontuação;
+                    }
+                    atualiza_oponente();
+                });
+        }
+
+
+        document.querySelector("#oponente_player").addEventListener("keyup", function (event) {
             if (event.key === "Enter") {
                 return atualiza_informações();
             }
         });
-        </script>
+    </script>
 </body>
+
 </html>
