@@ -22,7 +22,7 @@ body {
     padding: 40px;
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.18);
     background-color: var(--bs-white);
     margin: 8px;
     overflow-wrap: break-word;
@@ -42,6 +42,10 @@ p {
     overflow-wrap: break-word;
 }
 
+#oponente_player {
+    background: none;
+}
+
 #oponente_system {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-size: 2rem;
@@ -58,7 +62,7 @@ p {
 #pontuação, #rodada {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-size: 1.2rem;
-    color: rgb(154, 154, 154);
+    color: #9A9A9A;
 }
 #pontuação::after {
     content: " ponto(s)";
@@ -102,6 +106,7 @@ input {
     height: 4rem;
 }
 
+/* 
 #signup {
     position: absolute;
     color: aliceblue;
@@ -110,7 +115,57 @@ input {
     left: 0; 
     margin: 0; 
     padding: 10px;
+} 
+*/
+/* Style for the toggle switch */
+
+.switch {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
 
 @media (max-width: 768px) {
     h1 {
