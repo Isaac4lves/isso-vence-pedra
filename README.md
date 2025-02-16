@@ -5,5 +5,5 @@ Uma versão de baixa renda do site [What Beats Rock Game](https://www.whatbeatsr
 
 ## Features Futuras.
 1. Ranking
-2. Modo Escuro
-3. Melhoria no Código Fonte
+2. ~Modo Escuro~
+3. ~Melhoria no Código Fonte~
